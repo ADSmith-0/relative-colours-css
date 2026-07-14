@@ -1,0 +1,110 @@
+:root {
+	/* Dark green */
+	/* --bg: oklch(0.2 0.5 120); */
+	/* Pink */
+	/* --bg: oklch(0.7 0.15 330); */
+	/* Light blue */
+	/* --bg: oklch(0.8 0.1 240); */
+	/* --bg: oklch(0.8 0.1 80); */
+	/* --color-1: oklch(0.3 0.3 240); */
+	--color-1: #4b92ec;
+	--color-2: oklch(from var(--color-1) calc(1 - l) c h);
+	--bg: light-dark(var(--color-1), var(--color-2));
+	--accent: light-dark(var(--color-2), var(--color-1));
+	--neutral: oklch(50% 0 0);
+	--fg-primary: color-mix(contrast-color(var(--bg)), var(--neutral) 10%);
+	--fg-secondary: oklch(from var(--fg-primary) l c h / 0.78);
+	--fg-tertiary: oklch(from var(--fg-primary) l c h / 0.65);
+}
+
+html {
+	color-scheme: light dark;
+	background-color: var(--bg);
+	color: var(--fg-tertiary);
+}
+
+body {
+	font-family: system-ui;
+	font-size: 1.125rem;
+	line-height: 1.6;
+}
+
+main {
+	width: min(65ch, 100% - 4rem);
+	margin-inline: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+span,
+p,
+a {
+	&[data-text="primary"] {
+		color: var(--fg-primary);
+	}
+
+	&[data-text="secondary"] {
+		color: var(--fg-secondary);
+	}
+
+	&[data-text="tertiary"] {
+		color: var(--fg-tertiary);
+	}
+}
+
+
+button {
+	color: var(--color-2);
+}
+
+button {
+	&[data-variant="primary"] {
+		--surface: var(--accent);
+
+		&:is(:focus-visible, :hover) {
+			background-color: oklch(from var(--surface) l c h / 0.78);
+		}
+	}
+
+	&[data-variant="secondary"] {
+		--surface: oklch(from var(--accent) l c h / 0.65);
+		color: color-mix(contrast-color(color-mix(var(--surface), var(--bg) 50%)), var(--neutral) 10%);
+
+		&:is(:focus-visible, :hover) {
+			background-color: oklch(from var(--surface) l c h / 0.5);
+		}
+	}
+
+	&[data-variant="destructive"] {
+		--surface: oklch(0.4 0.3 0);
+
+		&:is(:focus-visible, :hover) {
+			background-color: oklch(from var(--surface) calc(l * 0.8) calc(c * 1.2) h);
+		}
+	}
+
+	--_surface: var(--surface, #fff);
+	border-radius: 100vw;
+	padding-inline: 1.2em;
+	padding-block: 0.7em;
+	color: color-mix(contrast-color(var(--_surface)), var(--neutral) 10%);
+	background-color: var(--_surface);
+	box-sizing: border-box;
+	border: none;
+	cursor: pointer;
+
+	&[data-style="outline"] {
+		color: color-mix(contrast-color(var(--bg)), var(--neutral) 10%);
+		background-color: oklch(from var(--_surface) l c h / 0.1);
+		border: 2px solid var(--_surface);
+
+		&:is(:focus-visible, :hover) {
+			background-color: oklch(from var(--_surface) l c h / 0.2);
+		}
+	}
+}
