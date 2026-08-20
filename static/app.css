@@ -1,32 +1,31 @@
 :root {
 	/* Dark green */
-	/* --bg: oklch(0.2 0.5 120); */
+	/* --color-1: oklch(0.2 0.5 120); */
 	/* Pink */
-	/* --bg: oklch(0.7 0.15 330); */
-	/* Light blue */
-	/* --bg: oklch(0.8 0.1 240); */
-	/* --bg: oklch(0.8 0.1 80); */
+	/* --accent-light: oklch(0.7 0.11 330); */
+	/* blue */
+	--accent-light: oklch(0.7 0.3 240);
+	/* --color: oklch(0.8 0.1 80); */
 	/* --color-1: oklch(0.3 0.3 240); */
-	--color-1: #4b92ec;
-	--color-2: oklch(from var(--color-1) calc(1 - l) c h);
-	--bg: light-dark(var(--color-1), var(--color-2));
-	--accent: light-dark(var(--color-2), var(--color-1));
+	/* --color-1: #4b92ec; */
+	--accent-dark: oklch(from var(--accent-light) calc(1 - l) c h);
+	--accent: light-dark(var(--accent-dark), var(--accent-light));
+	--bg: light-dark(color-mix(#e5e5e5, var(--accent-light) 5%), color-mix(#212121, var(--accent-dark) 5%));
 	--neutral: oklch(50% 0 0);
-	--fg-primary: color-mix(contrast-color(var(--bg)), var(--neutral) 10%);
-	--fg-secondary: oklch(from var(--fg-primary) l c h / 0.78);
-	--fg-tertiary: oklch(from var(--fg-primary) l c h / 0.65);
 }
 
 html {
 	color-scheme: light dark;
 	background-color: var(--bg);
-	color: var(--fg-tertiary);
+	color: var(--text-tertiary);
 }
 
 body {
 	font-family: system-ui;
 	font-size: 1.125rem;
 	line-height: 1.6;
+	margin: 0;
+	padding: 0;
 }
 
 main {
@@ -44,16 +43,23 @@ div,
 span,
 p,
 a {
+	--text-bg: var(--_bg, var(--bg));
+	--text-primary: color-mix(contrast-color(var(--text-bg)), var(--neutral) 15%);
+	--text-secondary: oklch(from var(--text-primary) l c h / 0.78);
+	--text-tertiary: oklch(from var(--text-primary) l c h / 0.65);
+
+	color: var(--text-primary);
+
 	&[data-text="primary"] {
-		color: var(--fg-primary);
+		color: var(--text-primary);
 	}
 
 	&[data-text="secondary"] {
-		color: var(--fg-secondary);
+		color: var(--text-secondary);
 	}
 
 	&[data-text="tertiary"] {
-		color: var(--fg-tertiary);
+		color: var(--text-tertiary);
 	}
 }
 
@@ -65,6 +71,7 @@ button {
 button {
 	&[data-variant="primary"] {
 		--surface: var(--accent);
+		color: color-mix(contrast-color(var(--surface)), var(--neutral) 10%);
 
 		&:is(:focus-visible, :hover) {
 			background-color: oklch(from var(--surface) l c h / 0.78);
@@ -73,7 +80,7 @@ button {
 
 	&[data-variant="secondary"] {
 		--surface: oklch(from var(--accent) l c h / 0.65);
-		color: color-mix(contrast-color(color-mix(var(--surface), var(--bg) 50%)), var(--neutral) 10%);
+		color: color-mix(contrast-color(var(--surface)), var(--neutral) 10%);
 
 		&:is(:focus-visible, :hover) {
 			background-color: oklch(from var(--surface) l c h / 0.5);
