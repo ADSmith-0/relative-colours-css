@@ -6,13 +6,9 @@
 </script>
 
 <h1>oklch</h1>
-
-<p>
-	A colour scheme which works better for the modern browser, it means that you can't pick bad
-	colours, for example:
-</p>
-
-<div class="flex flex-row-center" style="gap: 2rem;">
+<code>color: oklch(0.5 0.2 10 / 0.9); </code>
+<p>A colour scheme that is closer to how humans perceive colour</p>
+<div class="flex flex-row-center" style="padding-top: 1rem; gap: 2rem;">
 	<section
 		class="box"
 		style="background-color: oklch({luminosity} {chroma} {hue} / {alpha})"
