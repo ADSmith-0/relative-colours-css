@@ -16,7 +16,9 @@
 	<a href={resolve('/colour-mix')}>Colour mix</a>
 </nav>
 
-{@render children()}
+<main>
+	{@render children()}
+</main>
 
 <style>
 	nav {
@@ -35,5 +37,9 @@
 		a:is(:hover, :focus) {
 			color: oklch(from var(--text-primary) l c h / 0.8);
 		}
+	}
+
+	main {
+		padding: 1rem 0;
 	}
 </style>
