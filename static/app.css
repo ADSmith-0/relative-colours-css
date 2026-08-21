@@ -10,7 +10,7 @@
 	/* --color-1: #4b92ec; */
 	--accent-dark: oklch(from var(--accent-light) calc(1 - l) c h);
 	--accent: light-dark(var(--accent-dark), var(--accent-light));
-	--bg: light-dark(color-mix(#e5e5e5, var(--accent-light) 5%), color-mix(#212121, var(--accent-dark) 5%));
+	--bg: light-dark(color-mix(#e5e5e5, var(--accent-light) 2%), color-mix(#212121, var(--accent-dark) 5%));
 	--neutral: oklch(50% 0 0);
 }
 
