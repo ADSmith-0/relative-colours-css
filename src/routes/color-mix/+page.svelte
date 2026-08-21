@@ -1,1 +1,1 @@
-<h1>Color</h1>
+<h1>Colour mixing</h1>
