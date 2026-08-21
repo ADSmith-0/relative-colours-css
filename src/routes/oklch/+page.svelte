@@ -6,8 +6,8 @@
 </script>
 
 <h1>oklch</h1>
-<code>color: oklch(0.5 0.2 10 / 0.9); </code>
 <p>A colour scheme that is closer to how humans perceive colour</p>
+<code>color: oklch(0.5 0.2 10 / 0.9); </code>
 <div class="flex flex-row-center" style="padding-top: 1rem; gap: 2rem;">
 	<section
 		class="box"
