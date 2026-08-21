@@ -12,8 +12,8 @@
 <nav>
 	<a href={resolve('/oklch')}>oklch</a>
 	<a href={resolve('/relative-colours')}>Relative colours</a>
-	<a href={resolve('/colour-contrast')}>Contrast colour</a>
-	<a href={resolve('/colour-mix')}>Colour mix</a>
+	<a href={resolve('/contrast-color')}>contrast-colour</a>
+	<a href={resolve('/color-mix')}>color-mix</a>
 </nav>
 
 <main>
